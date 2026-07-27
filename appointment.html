@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Health Diagnostic Center</title>
+
+    <link rel="stylesheet" href="appointment.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+                <img src="clogo.png" alt="logo">
+            </div>
+
+            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+            <nav id="navMenu">
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="aboutus.html">About Us</a></li>
+
+                    <li><a href="packages.html">Test Packages</a></li>
+
+                    <li><a href="doctors.html">Doctor's Directory</a></li>
+
+                    <li><a href="departments.html">Departments</a></li>
+
+                    <li><a href="contact.html">Contact</a></li>
+
+                    <li><a href="appointment.html" class="btn1">Book Appointment</a></li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Book Your Diagnostic Test Appointment</h1>
+
+            <p>
+                Fast, Accurate & Reliable Diagnostic Services with Modern
+                Laboratory Facilities.
+            </p>
+
+            <a href="#appointment" class="hero-btn">Book Now</a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= APPOINTMENT ================= -->
+
+    <section class="appointment" id="appointment">
+
+        <div class="appointment-container">
+
+            <div class="appointment-image">
+
+                <img src="https://img.magnific.com/free-photo/doctor-getting-patient-ready-ct-scan_23-2149367402.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="Diagnostic Center">
+
+            </div>
+
+            <div class="appointment-form">
+
+                <h2>Book Appointment</h2>
+
+                <form id="bookingForm">
+
+                    <input type="text" placeholder="Patient Full Name" required>
+
+                    <input type="email" placeholder="Email Address" required>
+
+                    <input type="tel" placeholder="Mobile Number" required>
+
+                    <input type="number" placeholder="Age" required>
+
+                    <select required>
+
+                        <option value="">Select Department</option>
+
+                        <option>
+                            Radiology (X-rays, CT, MRI, Ultrasound)
+                        </option>
+
+                        <option>
+                            Pathology (Hematology, Clinical Biochemistry,
+                            Histopathology)
+                        </option>
+
+                        <option>
+                            Microbiology (Bacteria & Viral Analysis)
+                        </option>
+
+                    </select>
+
+                    <input type="date" required>
+
+                    <select required>
+
+                        <option>Select Preferred Time</option>
+
+                        <option>09:00 AM</option>
+
+                        <option>10:00 AM</option>
+
+                        <option>11:00 AM</option>
+
+                        <option>12:00 PM</option>
+
+                        <option>02:00 PM</option>
+
+                        <option>03:00 PM</option>
+
+                        <option>04:00 PM</option>
+
+                        <option>05:00 PM</option>
+
+                    </select>
+
+                    <textarea rows="4"
+                        placeholder="Additional Notes (Optional)"></textarea>
+
+                    <button type="submit">
+                        Confirm Appointment
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Health Diagnostic Center. All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
