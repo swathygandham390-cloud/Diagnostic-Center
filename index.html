@@ -1,0 +1,537 @@
+<html>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Diagnostic center website</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* Header */
+  
+  header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 3%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 100px;
+    height: 80px;
+}
+
+.logo h2 {
+    color: #0097a7;
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #131212;
+    font-weight: 600;
+    transition: .3s;
+}
+
+nav ul li a:hover {
+    color: #00acc1;
+}
+
+.btn1 {
+    display: inline-block;
+    background: #00acc1;
+    color: #fff;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn1:hover {
+    background: #e5533d;
+    transform: translateY(-3px);
+}
+
+
+.menu-btn {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+  .btn-primary {
+    background: #0b6e6e;
+    color: #fff;
+  }
+  .btn-primary:hover { background: #095656; }
+
+
+  /*mobile*/
+  @media(max-width:768px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 18px;
+    }
+    nav ul li a:hover{
+        color: #0b6e6e;
+    }
+}
+
+  /* Hero */
+  .hero {
+    background: #e8f5f5;
+    padding: 60px 0;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #0b3d3d;
+  }
+  .hero p {
+    font-size: 17px;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+
+  /* Sections */
+  section {
+    padding: 60px 0;
+  }
+  section h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 40px;
+    color: blue;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+  }
+ 
+  .service-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 24px;
+    text-align: center;
+  }
+  .service-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #9323dd;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  .service-card:hover{
+    background-color: #a9d4d4;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border-color: #222;
+    box-shadow:  blue;
+  }
+
+  /* How it works */
+  .how-it-works {
+    background: #f7f7f7;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+  }
+  .step-number {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: #0b6e6e;
+    color: #fff;
+    margin: 0 auto 14px;
+    font-weight: bold;
+  }
+  .steps h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .steps p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* Packages */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .package-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 28px;
+    text-align: center;
+  }
+  .package-card.featured {
+    border: 2px solid #0b6e6e;
+  }
+  .package-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #0b3d3d;
+  }
+  .package-card .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0b6e6e;
+    margin-bottom: 16px;
+  }
+  .package-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .package-card li {
+    font-size: 14px;
+    color: #555;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .package-card:hover{
+    transform: translateY(-6px);
+    background-color: rgb(174, 238, 174);
+    
+  }
+
+  /* CTA */
+  .cta {
+    background: #0b6e6e;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+  }
+  .cta h2 { color: #fff; margin-bottom: 14px; }
+  .cta p { margin-bottom: 24px; color: #d9f0f0; }
+  .cta .btn-primary {
+    background: #fff;
+    color: #0b6e6e;
+  }
+  .cta .btn-primary:hover { background: #eee; }
+
+  /* Footer */
+  footer {
+    background: #0b3d3d;
+    color: #cde;
+    padding: 40px 0 20px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 24px;
+  }
+  footer h4 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  footer a, footer p {
+    font-size: 14px;
+    color: #b8d4d4;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .footer-bottom {
+    text-align: center;
+    font-size: 13px;
+    color: #8fb5b5;
+    border-top: 1px solid #1a5555;
+    padding-top: 16px;
+  }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    .nav-links { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .packages-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+
+<div class="logo">
+<img src="lloog.png" alt="logo">
+
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutus.html">About Us</a></li>
+<li><a href="packages.html">Test Packages</a></li>
+<li><a href="doctors.html">Doctor's Directory</a></li>
+<li><a href="departments.html">Departments</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="appointment.html" class="btn1">Book Appointment</a></li>
+</ul>
+</nav>
+
+</div>
+
+  
+</header>
+<img src="Diagnostic_Test logo.png" width="1300px">
+
+<section class="hero">
+  <div class="container">
+    <h1>Accurate Diagnostic Tests, Fast Reports</h1>
+    <p>Blood tests, scans, and full-body checkups with same-day digital reports. Home sample collection available.</p>
+    <a href="#book" class="btn btn-primary">Book a Test Now</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Blood Tests</h3>
+        <p>CBC, sugar, thyroid, lipid profile, and more.</p>
+      </div>
+      <div class="service-card">
+        <h3>Imaging &amp; Scans</h3>
+        <p>X-ray, ultrasound, CT, and MRI scans.</p>
+      </div>
+      <div class="service-card">
+        <h3>Cardiac Tests</h3>
+        <p>ECG, 2D echo, and TMT screening.</p>
+      </div>
+      <div class="service-card">
+        <h3>Health Checkups</h3>
+        <p>Full-body packages for regular screening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div>
+        <div class="step-number">1</div>
+        <h3>Book a Slot</h3>
+        <p>Choose a test and pick a convenient time.</p>
+      </div>
+      <div>
+        <div class="step-number">2</div>
+        <h3>Sample Collected</h3>
+        <p>Visit our center or get home collection.</p>
+      </div>
+      <div>
+        <div class="step-number">3</div>
+        <h3>Lab Testing</h3>
+        <p>Your sample is processed in our lab.</p>
+      </div>
+      <div>
+        <div class="step-number">4</div>
+        <h3>Get Report</h3>
+        <p>Receive your report online, same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="container">
+    <h2>Health Packages</h2>
+    <div class="packages-grid">
+      <div class="package-card">
+        <h3>Basic Checkup</h3>
+        <div class="price">₹1,499</div>
+        <ul>
+          <li>Complete blood count</li>
+          <li>Blood sugar test</li>
+          <li>Lipid profile</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+      <div class="package-card featured">
+        <h3>Full Body Checkup</h3>
+        <div class="price">₹3,299</div>
+        <ul>
+          <li>All Basic tests included</li>
+          <li>Thyroid profile</li>
+          <li>ECG + Chest X-ray</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+      <div class="package-card">
+        <h3>Cardiac Package</h3>
+        <div class="price">₹2,799</div>
+        <ul>
+          <li>ECG + 2D Echo</li>
+          <li>Lipid profile</li>
+          <li>Cardiologist review</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+      <div class="package-card">
+        <h3>Diabetes Screening</h3>
+        <div class="price">₹999</div>
+        <ul>
+          <li>HbA1C</li>
+          <li>Urine Sugar test</li>
+          <li>Fasting &amp; pp blood sugar</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+      <div class="package-card">
+        <h3>Women's Wellness</h3>
+        <div class="price">₹2,199</div>
+        <ul>
+          <li>Complete blood count</li>
+          <li>Thyroid Profile</li>
+          <li>Iron studies</li>
+          <li>Vitamin D &amp; B12</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+      <div class="package-card">
+        <h3>Senior Citizen checkup</h3>
+        <div class="price">₹3,799</div>
+        <ul>
+            <li>Full body Panel</li>
+          <li>ECG + 2D Echo</li>
+          <li>Lipid profile</li>
+          <li>Bone density test</li>
+        </ul>
+        <a href="#book" class="btn btn-primary">Book Now</a>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="book">
+  <div class="container">
+    <h2>Ready to Book Your Test?</h2>
+    <p>Walk in or request home sample collection.</p>
+    <a href="appointment.html" class="btn btn-primary">Book your apponitment</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Health  Diagnostics</h4>
+        <p>Trusted diagnostic center for blood tests, scans, and full-body checkups.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="aboutus.html">About us</a>
+        <a href="packages.html">Test Packages</a>
+        <a href="doctors.html">Doctors Directory</a>
+        <a href="departments.html">Departments</a>
+        <a href="contact.html">contact</a>
+        <a href="appointment.html">Book an appointment</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+911234567890">+91 12345 67890</a>
+        <a href="health:care@healthandiagnostics.in">care@healthandiagnostics.in</a>
+        <p>Mon–Sat, 6 AM – 9 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Health Diagnostics. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+
+document.querySelectorAll("nav a").forEach(link=>{
+link.addEventListener("click",()=>{
+document.getElementById("navMenu").classList.remove("active");
+});
+});
+
+</script>
+
+</body>
+</html>
