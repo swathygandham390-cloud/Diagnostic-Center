@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <title>Health Diagnostic - Contact Us</title>
+    <link rel="icon" type="image/png" href="cminilogo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="concss.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container navbar">
+
+            <div class="logo">
+
+                <img src="clogo.png" alt="logo">
+
+
+            </div>
+
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="packages.html">Test Packages</a></li>
+                    <li><a href="doctors.html">Doctor's Directory</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="appointment.html" class="btn1">Book Appointment</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Your Health is Our Priority</h1>
+
+            <p>
+                Providing reliable pathology, radiology, and preventive health check-up services with advanced
+                diagnostic technology and expert healthcare professionals.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+
+    <section class="contact-section">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <!-- Left -->
+
+                <div class="info">
+
+                    <h2>Health Diagnostic Center</h2>
+
+                    <p><strong>Address:</strong><br>
+                        Road No.1, KPHB Colony,<br>
+                        Hyderabad, Telangana 500072
+                    </p>
+
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+
+                    <p><strong>Email:</strong> info@healthdiagnostic.com</p>
+
+                    <p><strong>Working Hours:</strong><br>
+
+                        Mon - Sat : 7:00 AM - 9:00 PM<br>
+
+                        Sunday : 7:00 AM - 2:00 PM
+
+                    </p>
+
+                    <h3>Find Us</h3>
+
+                    <iframe src="https://maps.google.com/maps?q=KPHB%20Hyderabad&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+                <!-- Right -->
+
+                <div class="form-box">
+
+                    <h2>Send an Inquiry</h2>
+
+                    <form id="contactForm">
+
+                        <input type="text" id="name" placeholder="Full Name" required>
+
+                        <input type="email" id="email" placeholder="Email Address" required>
+
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                        <textarea id="messageBox" placeholder="Write your inquiry..." required></textarea>
+
+                        <button type="submit">Send Inquiry</button>
+
+                    </form>
+
+                    <div id="message"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <h2>Health Diagnostic</h2>
+
+                <p>Trusted Diagnostics. Accurate Results. Better Health.</p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="packages.html">Test Packages</a>
+                <a href="doctors.html">Doctor's Directory</a>
+                <a href="departments.html">Departments</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        const hamburger = document.getElementById("hamburger");
+        const nav = document.getElementById("navMenu");
+
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("active");
+
+            if (nav.classList.contains("active")) {
+                hamburger.innerHTML = '<i class="fas fa-times-circle"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            document.getElementById("message").innerHTML =
+                "✔ Thank you! Your inquiry has been submitted successfully.";
+
+            this.reset();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
