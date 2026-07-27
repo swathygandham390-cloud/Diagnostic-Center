@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Diagnostics & Research Centre</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Reset & Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 3%;
+    height: 75px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 60px;
+    height: auto;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #131212;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #00acc1;
+}
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navbar */
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.85), rgba(13, 110, 253, 0.75)), url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: #fff;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #00acc1;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0097a7;
+            transform: translateY(-2px);
+        }
+
+        /* Departments Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6c757d;
+        }
+
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        /* Department Block Cards */
+        .dept-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .dept-image-container {
+            position: relative;
+            height: 210px;
+            width: 100%;
+        }
+
+        .dept-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dept-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(13, 110, 253, 0.9);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dept-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .dept-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+
+        .dept-content > p {
+            color: #6c757d;
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+        }
+
+        /* List Box Representation for Sub-Services */
+        .list-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .list-box h4 {
+            font-size: 0.9rem;
+            color: #495057;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .list-box ul {
+            list-style: none;
+        }
+
+        .list-box li {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .list-box li:last-child {
+            margin-bottom: 0;
+        }
+
+        .list-box li i {
+            color: #0d6efd;
+            font-size: 0.8rem;
+        }
+
+        .btn-details {
+            background-color: #e7f1ff;
+            color: #0d6efd;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-details:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #212529;
+            color: #fff;
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            margin-bottom: 20px;
+            color: #f8f9fa;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
+            color: #adb5bd;
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .footer-col ul a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: #fff;
+        }
+
+        .footer-col p i {
+            margin-right: 8px;
+            color: #0d6efd;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #343a40;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        /* Interactive Popups / Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+            color: #0d6efd;
+        }
+
+        .modal-content p {
+            color: #495057;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Styling & Media Queries */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 75px;
+                left: 0;
+                right: 0;
+                width: 100vw;
+                background: #ffffff;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                padding: 20px 3%;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease forwards;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="diagnostic.webp" alt="logo" style="width: 60px; height: auto;">
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <nav class="nav-links" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="packages.html">Test Packages</a>
+                <a href="doctors.html">Doctor's Directory</a>
+                <a href="departments.html">Departments</a>
+                <a href="contact.html">Contact</a>
+                <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Advanced Diagnostic & Medical Laboratories</h1>
+            <p>Delivering precision, accuracy, and compassionate healthcare with state-of-the-art Radiology, Pathology, and Microbiology services.</p>
+            <a href="#services" class="btn btn-primary">Explore Departments</a>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Diagnostic Departments</h2>
+                <p>Advanced block-view facilities structured for clear and rapid specialist investigation.</p>
+            </div>
+            
+            <div class="department-grid">
+                
+                <!-- 1. Radiology Department -->
+                <div class="dept-card">
+                    <div class="dept-image-container">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" alt="Radiology Department">
+                        <div class="dept-badge"><i class="fa-solid fa-radiation"></i> Radiology</div>
+                    </div>
+                    <div class="dept-content">
+                        <h3>Advanced Imaging & Radiology</h3>
+                        <p>High-resolution internal scanning techniques ensuring accurate anatomical diagnosis.</p>
+                        
+                        <div class="list-box">
+                            <h4>Specialized Sub-Services:</h4>
+                            <ul>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> X-Ray Diagnostics</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> CT Scan (Computed Tomography)</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> MRI (Magnetic Resonance Imaging)</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Ultrasound & Doppler Studies</li>
+                            </ul>
+                        </div>
+                        <button class="btn-details" onclick="openModal('radiologyModal')">View Department Info</button>
+                    </div>
+                </div>
+
+                <!-- 2. Pathology Department -->
+                <div class="dept-card">
+                    <div class="dept-image-container">
+                        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80" alt="Pathology Department">
+                        <div class="dept-badge"><i class="fa-solid fa-flask"></i> Pathology</div>
+                    </div>
+                    <div class="dept-content">
+                        <h3>Clinical & Histopathology</h3>
+                        <p>Precision laboratory analysis supporting disease detection, tracking, and staging.</p>
+                        
+                        <div class="list-box">
+                            <h4>Specialized Sub-Services:</h4>
+                            <ul>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Hematology (Blood Cell Analysis)</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Clinical Biochemistry & Profiles</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Histopathology & Biopsy Reviews</li>
+                            </ul>
+                        </div>
+                        <button class="btn-details" onclick="openModal('pathologyModal')">View Department Info</button>
+                    </div>
+                </div>
+
+                <!-- 3. Microbiology Department -->
+                <div class="dept-card">
+                    <div class="dept-image-container">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80" alt="Microbiology Department">
+                        <div class="dept-badge"><i class="fa-solid fa-virus"></i> Microbiology</div>
+                    </div>
+                    <div class="dept-content">
+                        <h3>Bacterial & Viral Analysis</h3>
+                        <p>Specialized isolation and sensitivity testing for complex infectious pathologies.</p>
+                        
+                        <div class="list-box">
+                            <h4>Specialized Sub-Services:</h4>
+                            <ul>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Bacterial Culture & Sensitivity Testing</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Viral Analysis & Serology Testing</li>
+                                <li><i class="fa-solid fa-circle-chevron-right"></i> Fungal & Parasitic Pathogen Studies</li>
+                            </ul>
+                        </div>
+                        <button class="btn-details" onclick="openModal('microbiologyModal')">View Department Info</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Health Diagnostics</h3>
+                <p>Your trusted partner in healthcare diagnostics. Delivering dependable, swift, and certified medical results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Departments</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 4th Block, Jayanagar, Bangalore.</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98987 65654</p>
+                <p><i class="fa-solid fa-envelope"></i> care@healthdiagnostic.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Health Diagnostics. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Popups / Modals -->
+    <div id="radiologyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('radiologyModal')">&times;</span>
+            <h2>Radiology Department Overview</h2>
+            <p>Our Radiology division leverages cutting-edge low-dose X-ray machines, advanced high-field MRI systems, multi-slice CT scanners, and 4D ultrasound suites to produce crisp internal structural readouts interpreted by experienced radiologists.</p>
+        </div>
+    </div>
+
+    <div id="pathologyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('pathologyModal')">&times;</span>
+            <h2>Pathology Department Overview</h2>
+            <p>The Pathology department features fully automated analyzers for routine and complex hematology parameters, deep biochemical profile evaluations, and accurate microscopic tissue analysis (histopathology) to confirm clinical diagnosis swiftly.</p>
+        </div>
+    </div>
+
+    <div id="microbiologyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('microbiologyModal')">&times;</span>
+            <h2>Microbiology Department Overview</h2>
+            <p>Dedicated to detecting infectious agents, our microbiology suite uses state-of-the-art incubation and PCR platforms for bacterial culture testing and viral identification, empowering clinicians with precise antimicrobial susceptibility markers.</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Hamburger Menu Toggle Functionality
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navbar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Auto-close menu on link click for mobile screen interaction
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Interactive Popup Modals Handler
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Dismiss modal window when clicking backdrop outside content
+        window.addEventListener('click', (event) => {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
